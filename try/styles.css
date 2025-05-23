@@ -1,0 +1,142 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Shadow Entrance Effect */
+#shadow-overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(45,0,94,1) 0%, rgba(5,5,5,1) 100%);
+    z-index: 1000;
+    animation: shadowRise 2.5s forwards;
+}
+
+@keyframes shadowRise {
+    0% {
+        transform: scale(3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Container with Glowing Shadows */
+.container {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(110, 10, 180, 0.6);
+    max-width: 500px;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn 3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title with Neon Shadow */
+h1.shadow-text {
+    font-size: 32px;
+    color: #9b59b6;
+    text-shadow: 0 0 15px #c0392b, 0 0 30px #8e44ad;
+    animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 15px #c0392b, 0 0 30px #8e44ad;
+    }
+    100% {
+        text-shadow: 0 0 25px #9b59b6, 0 0 45px #673ab7;
+    }
+}
+
+/* Buttons with Lightning Effect */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    margin: 5px;
+    transition: all 0.3s ease;
+    color: white;
+    font-weight: 600;
+    background: linear-gradient(135deg, #8e44ad, #5b2c6f);
+    box-shadow: 0 0 15px #6f1e51;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #c0392b, #8e44ad);
+    box-shadow: 0 0 25px #ff7675;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    top: -50%;
+    left: 0;
+    transform: rotate(45deg);
+    transition: 0.3s;
+}
+
+button:hover::before {
+    top: 100%;
+}
+
+/* Map */
+#map {
+    height: 300px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(110, 10, 180, 0.6);
+}
+
+/* Object Detection */
+#object-detection-view {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#object-video, #object-canvas {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #8e44ad;
+}
+
+/* Fade In on Load */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}

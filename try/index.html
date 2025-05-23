@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Monarch E-Bike Navigation</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Shadow Entrance Animation -->
+    <div id="shadow-overlay"></div>
+
+    <div class="container">
+        <h1 class="shadow-text">E-Bike Navigation with parking assistance 🚴</h1>
+
+        <!-- Weather Info -->
+        <div class="weather-info">
+            <p id="weather-text">Fetching weather...</p>
+        </div>
+
+        <div class="weather-info">
+            <p id="source-weather">Source Weather: Fetching...</p>
+            <img id="source-weather-icon" src="" alt="Source Weather Icon" />
+        </div>
+        <div class="weather-info">
+            <p id="destination-weather">Destination Weather: Fetching...</p>
+            <img id="destination-weather-icon" src="" alt="Destination Weather Icon" />
+        </div>
+
+        <div class="input-container">
+            <select id="origin">
+                <option value="">Select Origin</option>
+                <option value="your-location">Your Location</option>
+            </select>
+            <input type="text" id="destination" placeholder="Enter destination" />
+            <div id="destination-suggestions" class="suggestions"></div>
+
+            <button id="navigate"><i class="fas fa-route"></i> Navigate</button>
+            <button id="start" style="display: none;"><i class="fas fa-play"></i> Start Navigation</button>
+            <button id="locate-parking"><i class="fas fa-parking"></i> Locate Parking</button>
+            <button id="add-parking"><i class="fas fa-plus"></i> Add Parking</button>
+            <button id="detect-parking"><i class="fas fa-car"></i> Detect Parking</button>
+            <button id="mute" class="mute-button"><i class="fas fa-volume-mute"></i> Mute</button>
+        </div>
+
+        <div id="location-display">
+            Current Location: Latitude -, Longitude -
+        </div>
+
+        <div id="map"></div>
+
+        <div id="camera-view" style="display: none;">
+            <video autoplay id="video" style="width: 100%;"></video>
+        </div>
+    </div>
+
+    <button id="detect-back"><i class="fas fa-video"></i> Start Object Detection</button>
+
+    <div id="object-detection-view">
+        <video id="object-video" autoplay playsinline></video>
+        <canvas id="object-canvas"></canvas>
+        <p id="object-alert"></p>
+    </div>
+    <!-- TensorFlow.js and COCO-SSD -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
